@@ -26,14 +26,8 @@
     "symfony/css-selector": "2.8.*|3.0.*",
     "symfony/dom-crawler": "2.8.*|3.0.*",
     "filp/whoops": "~2.0",
-    "versoo/larapi-fast": "*"
+    "versoo/larapi-fast": "dev-master"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/Versoo/larapi-fast.git"
-    }
-  ],
   "autoload": {
     "classmap": [
       "database"
