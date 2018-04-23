@@ -6,3 +6,10 @@ Homestead.json
 .env
 .DS_Store
 /storage/*.key
+/xdebug
+/xdebug/*
+/.idea
+/.idea/*
+error.log
+access.log
+composer.lock

@@ -6,7 +6,7 @@ of the offerings and how to do modern API development in Laravel I have written 
 [A Modern REST API in Laravel 5](http://esbenp.github.io/2016/04/11/modern-rest-api-laravel-part-0/)
 
 Larapi comes included with...
-* Laravel 5.4
+* Laravel 5.6
 * Laravel Passport for OAuth Authentication, including a proxy for password and refresh-token grants
 * A new directory structure optimized for separating infrastructure and domain code. Groups your controllers, models, etc. by resource-type. 
 [Read more and view the source code here](https://github.com/esbenp/distributed-laravel)
@@ -29,7 +29,7 @@ to make Laravel more enjoyable as an API framework.
 First clone the repository
 
 ```bash
-git clone https://github.com/esbenp/larapi my-api
+git clone https://github.com/Versoo/larapi my-api
 ```
 
 Install dependencies
@@ -42,6 +42,12 @@ Copy the `.env` file an create an application key
 
 ```
 cp .env.example .env && php artisan key:generate
+```
+
+Migrate the tables.
+
+```
+php artisan migrate
 ```
 
 Larapi comes with Passport include as the default authenticatin method. You should now install it using this command.
@@ -61,18 +67,12 @@ PASSWORD_CLIENT_SECRET=FJWQRS3PQj6atM6fz5f6AtDboo59toGplcuUYrKL
 
 If you want to save it elsewhere or change the naming be sure to modify the LoginProxy in `infrastructure/Auth/LoginProxy.php`
 
-Lastly, migrate the database tables
-
-```
-php artisan migrate
-```
-
 ## Test installation
 
 You can quickly test if the authentication works by creating an user using the include command.
 
 ```bash
-php artisan users:add Esben esben@esben.dk 1234
+php artisan users:add Versoo marcin@halak.pl qwerty123
 ```
 
 Now serve your application and try to request a token using cURL
@@ -81,8 +81,8 @@ Now serve your application and try to request a token using cURL
 php artisan serve
 curl -X POST http://localhost:8000/login -H 'Content-Type:application/json' -d '
 {
-    "email":"esben@esben.dk",
-    "password":"1234"
+    "email":"marcin@halak.pl",
+    "password":"qwerrty123"
 }'
 ```
 
@@ -101,7 +101,7 @@ curl http://localhost:8000/users -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhb
 This should return a response like so
 
 ```json
-{"users":[{"id":1,"name":"Esben","email":"esben@esben.dk","created_at":"2017-03-19 19:59:15","updated_at":"2017-03-19 19:59:15"}]}
+{"users":[{"id":1,"name":"Versoo","email":"marcin@halak.pl","created_at":"2017-03-19 19:59:15","updated_at":"2017-03-19 19:59:15"}]}
 ```
 
 You can refresh a new token by requesting `POST /login/refresh` and logout using `POST /logout`
