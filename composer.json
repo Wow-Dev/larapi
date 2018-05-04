@@ -7,6 +7,12 @@
   ],
   "license": "MIT",
   "type": "project",
+  "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/ch00n/larapi-fast"
+    }
+  ],
   "require": {
     "php": ">=7.0.0",
     "fideloper/proxy": "~4.0",
